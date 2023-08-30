@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
+import { Provider } from "./context/CartContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
         <NextTopLoader showSpinner={false} color="#EAC696" />
-        {children}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );
