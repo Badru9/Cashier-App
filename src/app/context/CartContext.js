@@ -9,7 +9,6 @@ const CartContext = createContext([]);
 const Provider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
-  const [checkout, setCheckout] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -31,7 +30,6 @@ const Provider = ({ children }) => {
       },
     ];
     setCart(newCart);
-    // console.log("addToCart", item);
   };
 
   const removeFromCart = (id) => {
@@ -52,10 +50,6 @@ const Provider = ({ children }) => {
     setCart(newCart);
   };
 
-  const checkoutItems = (item) => {
-    itemOnCart ? setCheckout(item.id) : console.log("Item tidak ada");
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -69,7 +63,6 @@ const Provider = ({ children }) => {
         itemOnCart,
         removeFromCart,
         updateCartQty,
-        checkoutItems,
       }}
     >
       {children}

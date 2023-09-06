@@ -22,7 +22,7 @@ export default function Item({
         <div className="flex flex-col items-start gap-2 w-[200px] truncate">
           <p className="font-semibold ">{item.title}</p>
           <p className="text-black/70 font-light ">{item.description}</p>
-          <p className="font-light">${item.price}</p>
+          <p className="font-medium">${item.price}</p>
         </div>
         {cartItem ? (
           <div className="flex  items-center gap-2">

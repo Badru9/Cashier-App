@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { CartContext } from "@/app/context/CartContext";
 
 export default function Cart() {
-  const { cart, checkoutItems } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   return (
     <>
@@ -24,7 +24,6 @@ export default function Cart() {
               <Link
                 href="/cart"
                 className="bg-beigePrimary px-4 py-2 rounded-md w-fit"
-                onClick={() => checkoutItems(item.id)}
               >
                 Checkout
               </Link>
