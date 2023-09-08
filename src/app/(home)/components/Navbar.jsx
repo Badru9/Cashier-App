@@ -23,7 +23,7 @@ export default function Navbar() {
           </span>
         )}
       </button>
-      {isClick && <Cart />}
+      {isClick && <Cart description={"Keranjang Anda Kosong"} />}
     </nav>
   );
 }

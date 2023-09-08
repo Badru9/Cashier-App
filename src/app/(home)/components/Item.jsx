@@ -19,7 +19,7 @@ export default function Item({
           height={200}
           className="rounded-md bg-white px-4 py-2 w-[200px] aspect-square object-contain"
         />
-        <div className="flex flex-col items-start gap-2 w-[200px] truncate">
+        <div className="flex flex-col items-start gap-2 w-[200px] truncate relative">
           <p className="font-semibold ">{item.title}</p>
           <p className="text-black/70 font-light ">{item.description}</p>
           <p className="font-medium">${item.price}</p>

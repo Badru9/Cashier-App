@@ -8,17 +8,24 @@ import Navbar from "../(home)/components/Navbar";
 // import CartComponent from "../(home)/components/cart";
 
 export default function Cart() {
-  const { cart, removeFromCart } = useContext(CartContext);
+  const { cart, removeFromCart, purchaseAllItem, purchaseEachItem } =
+    useContext(CartContext);
 
   return (
     <>
       <Navbar />
       <div className="bg-smokeWhite px-10 pt-5">
-        <h1 className="text-xl font-semibold tracking-wider from-beigePrimary to-transparent bg-gradient-to-r w-fit px-4 py-1 text-black/60">
+        <h1 className="text-xl font-semibold tracking-wider from-beigePrimary to-transparent bg-gradient-to-r w-fit px-4 py-1 text-black/60 ">
           Checkout List
         </h1>
+        <button
+          onClick={() => purchaseAllItem(...cart)}
+          className="mt-5 bg-beigePrimary px-4 py-1 rounded-md shadow-md  hover:bg-opacity-80"
+        >
+          Purchase All Item
+        </button>
       </div>
-      <div className="bg-smokeWhite min-h-screen w-full flex flex-wrap px-10 py-20 gap-5">
+      <div className="bg-smokeWhite min-h-screen w-full flex flex-wrap px-10 py-10 gap-5">
         {/* <button onClick={itemID}>Click</button> */}
 
         {cart.length > 0 ? (
@@ -39,18 +46,20 @@ export default function Cart() {
               <p className="font-semibold truncate w-[200px]">{item.title}</p>
               <p>
                 {" "}
+                <span className="font-semibold">Price</span> : ${item.price}
+              </p>
+              <p>
+                {" "}
                 <span className="font-semibold">Quantity</span> : {item.qty}
               </p>
               <p>
                 {" "}
                 <span className="font-semibold">Total</span> : $
-                {item.price * item.qty}
+                {Math.trunc(item.price * item.qty)}
               </p>
               <button
                 className="bg-beigePrimary rounded-md px-2 py-1 shadow-md hover:opacity-80"
-                onClick={() =>
-                  alert(`Item purchased for $${item.price * item.qty}`)
-                }
+                onClick={() => purchaseEachItem(item.id)}
               >
                 Purchase
               </button>
@@ -67,7 +76,6 @@ export default function Cart() {
             <p className="text-black/60 text-xl">Keranjang Anda Kosong</p>
           </div>
         )}
-
         {/* <CartComponent cartItems={cartItems} /> */}
       </div>
     </>

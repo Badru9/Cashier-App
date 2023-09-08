@@ -50,6 +50,28 @@ const Provider = ({ children }) => {
     setCart(newCart);
   };
 
+  const purchaseEachItem = (id) => {
+    const newCart = cart.find((item) => item.id === id);
+    const { price, qty } = newCart;
+    const total = Math.trunc(price * qty);
+    alert(`Purchased for $${total}`);
+    setCart([]);
+  };
+
+  const purchaseAllItem = () => {
+    let totalPrice = 0;
+
+    cart.forEach((item) => {
+      let allItemCost = Math.trunc(item.price * item.qty);
+
+      totalPrice += allItemCost;
+
+      console.log(`Purchasing $${totalPrice}`);
+      // console.log ini diganti dengan ( modal ), muncul tampilan dimana pembayaran sudah berhasil
+    });
+    setCart([]);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -63,6 +85,8 @@ const Provider = ({ children }) => {
         itemOnCart,
         removeFromCart,
         updateCartQty,
+        purchaseAllItem,
+        purchaseEachItem,
       }}
     >
       {children}
