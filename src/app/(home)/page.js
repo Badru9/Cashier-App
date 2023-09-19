@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Man from "../Man1.svg";
 import Blobs from "../blobs.svg";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import Item from "./components/item";
 import Navbar from "./components/Navbar";
@@ -12,10 +12,11 @@ export default function Home() {
   // Context
   const { items, addToCart, removeFromCart, itemOnCart, updateCartQty } =
     useContext(CartContext);
+
   return (
     <div className="w-full min-h-screen bg-first relative overflow-hidden">
       <Navbar />
-      <div className="flex justify-center bg-first relative w-full mt-10">
+      <div className="flex justify-center bg-first relative w-full mt-20">
         <div className="w-1/2">
           <Image
             src={Blobs}

@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 
 export default function Item({
@@ -9,6 +8,7 @@ export default function Item({
   updateCartQty,
 }) {
   const cartItem = onCart(item.id);
+
   return (
     <div key={item.id} className="flex w-[250px] rounded-md bg-white gap-5 p-5">
       <div className="flex flex-col px-4  w-full gap-5 items-center justify-center">
@@ -44,7 +44,7 @@ export default function Item({
             </div>
             <button
               onClick={() => removeFromCart(item.id)}
-              className="bg-beigePrimary px-4 py-2 rounded-md"
+              className="text-beigePrimary bg-transparent border-2 border-beigePrimary px-4 py-2 rounded-md"
             >
               Remove
             </button>

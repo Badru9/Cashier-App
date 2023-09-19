@@ -1,20 +1,22 @@
 "use client";
 
+import Keranjang from "../components/icons/Cart.svg";
 import Image from "next/image";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import Navbar from "../(home)/components/Navbar";
+import Modal from "./components/Modal";
 
 // import CartComponent from "../(home)/components/cart";
 
 export default function Cart() {
-  const { cart, removeFromCart, purchaseAllItem, purchaseEachItem } =
+  const { cart, removeFromCart, purchaseAllItem, purchaseEachItem, modal } =
     useContext(CartContext);
 
   return (
     <>
       <Navbar />
-      <div className="bg-smokeWhite px-10 pt-5">
+      <div className="bg-smokeWhite px-10 pt-5 mt-14">
         <h1 className="text-xl font-semibold tracking-wider from-beigePrimary to-transparent bg-gradient-to-r w-fit px-4 py-1 text-black/60 ">
           Checkout List
         </h1>
@@ -72,12 +74,13 @@ export default function Cart() {
             </div>
           ))
         ) : (
-          <div className="w-full flex justify-center items-center">
+          <div className="w-full flex flex-col gap-3 justify-center items-center select-none pointer-events-none">
+            <Image src={Keranjang} alt="Keranjang" width={150} height={150} />
             <p className="text-black/60 text-xl">Keranjang Anda Kosong</p>
           </div>
         )}
-        {/* <CartComponent cartItems={cartItems} /> */}
       </div>
+      {modal && <Modal />}
     </>
   );
 }

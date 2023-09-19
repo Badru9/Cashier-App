@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { CartContext } from "@/app/context/CartContext";
 
 export default function Cart({ description }) {
-  const { cart, getItemPrice } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   return (
     <>

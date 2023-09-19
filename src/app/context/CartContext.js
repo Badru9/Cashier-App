@@ -9,6 +9,9 @@ const CartContext = createContext([]);
 const Provider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
+  const [searchResult, setSearchResult] = useState("");
+  const [modal, setModal] = useState(false);
+  // const [purchase, setPurchase] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -51,25 +54,42 @@ const Provider = ({ children }) => {
   };
 
   const purchaseEachItem = (id) => {
-    const newCart = cart.find((item) => item.id === id);
-    const { price, qty } = newCart;
-    const total = Math.trunc(price * qty);
-    alert(`Purchased for $${total}`);
-    setCart([]);
+    const purchasedItem = cart.filter((item) => item.id === id);
+    if (!purchasedItem) {
+      console.error("Item not found");
+    }
+
+    setCart(purchasedItem);
+
+    setModal(true);
+    // const { price, qty } = purchasedItem;
+    // const total = Math.trunc(price * qty);
+    // console.log(`Purchased for $${total}`);
+
+    setTimeout(() => {
+      const newCart = cart.filter((item) => item.id !== id);
+      setCart(newCart);
+      setModal(false);
+    }, 3000);
   };
 
   const purchaseAllItem = () => {
-    let totalPrice = 0;
+    let total = 0;
 
     cart.forEach((item) => {
       let allItemCost = Math.trunc(item.price * item.qty);
 
-      totalPrice += allItemCost;
+      total += allItemCost;
 
-      console.log(`Purchasing $${totalPrice}`);
+      console.log(`Purchased for $${total}`);
       // console.log ini diganti dengan ( modal ), muncul tampilan dimana pembayaran sudah berhasil
     });
     setCart([]);
+  };
+
+  const searchItem = (e) => {
+    setSearchResult(e);
+    console.log(searchResult);
   };
 
   useEffect(() => {
@@ -87,6 +107,11 @@ const Provider = ({ children }) => {
         updateCartQty,
         purchaseAllItem,
         purchaseEachItem,
+        searchItem,
+        searchResult,
+        setCart,
+        modal,
+        setModal,
       }}
     >
       {children}
