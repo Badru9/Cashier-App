@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import Item from "./components/item";
 import Navbar from "./components/Navbar";
+import SearchedItem from "./components/Search";
 
 export default function Home() {
   // Context

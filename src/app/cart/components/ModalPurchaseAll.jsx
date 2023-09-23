@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useContext } from "react";
 
 export default function PurchasedItem() {
-  const { cart } = useContext(CartContext);
+  const { cart, purchase } = useContext(CartContext);
 
   return (
     <div className="w-full min-h-screen bg-slate-500/30 fixed top-0 flex flex-wrap items-center justify-center backdrop-blur-md">
@@ -13,7 +13,6 @@ export default function PurchasedItem() {
             className="bg-white text-black flex items-center justify-center gap-5 px-10 py-6 rounded-md shadow-md"
             key={item.id}
           >
-            <Image src={item.image} width={100} height={100} alt="image" />
             <div className="flex flex-col gap-2 mx-4">
               <div className="flex flex-col">
                 <p className="font-semibold">You Purchased</p>
@@ -21,9 +20,7 @@ export default function PurchasedItem() {
               </div>
               <div className="flex">
                 <p className="mr-2">for</p>
-                <span className="font-semibold">
-                  ${Math.trunc(item.price * item.qty)}
-                </span>
+                <span className="font-semibold">{Math.trunc(purchase)}</span>
               </div>
             </div>
           </div>

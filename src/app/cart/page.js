@@ -6,13 +6,13 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import Navbar from "../(home)/components/Navbar";
 import Modal from "./components/Modal";
+import ModalPurchaseAll from "./components/ModalPurchaseAll";
 
 // import CartComponent from "../(home)/components/cart";
 
 export default function Cart() {
   const { cart, removeFromCart, purchaseAllItem, purchaseEachItem, modal } =
     useContext(CartContext);
-
   return (
     <>
       <Navbar />
@@ -21,7 +21,7 @@ export default function Cart() {
           Checkout List
         </h1>
         <button
-          onClick={() => purchaseAllItem(...cart)}
+          onClick={() => purchaseAllItem()}
           className="mt-5 bg-beigePrimary px-4 py-1 rounded-md shadow-md  hover:bg-opacity-80"
         >
           Purchase All Item

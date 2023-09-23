@@ -11,7 +11,7 @@ const Provider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [searchResult, setSearchResult] = useState("");
   const [modal, setModal] = useState(false);
-  // const [purchase, setPurchase] = useState([]);
+  const [purchase, setPurchase] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -73,23 +73,32 @@ const Provider = ({ children }) => {
     }, 3000);
   };
 
-  const purchaseAllItem = () => {
-    let total = 0;
+  const purchaseAllItem = (id) => {
+    // const purchasedItem = cart.filter((item) => item.id === id);
+    if (cart.length === 0) {
+      console.error("Cart is empty");
+      return;
+    }
 
+    setModal(true);
+
+    let total = 0;
     cart.forEach((item) => {
       let allItemCost = Math.trunc(item.price * item.qty);
 
       total += allItemCost;
-
-      console.log(`Purchased for $${total}`);
-      // console.log ini diganti dengan ( modal ), muncul tampilan dimana pembayaran sudah berhasil
     });
-    setCart([]);
-  };
 
-  const searchItem = (e) => {
-    setSearchResult(e);
-    console.log(searchResult);
+    console.log(total);
+
+    setPurchase(total);
+
+    setTimeout(() => {
+      // const newCart = cart.filter((item) => item.id === id);
+      // setCart(newCart);
+      setCart([]);
+      setModal(false);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -107,11 +116,12 @@ const Provider = ({ children }) => {
         updateCartQty,
         purchaseAllItem,
         purchaseEachItem,
-        searchItem,
+        setSearchResult,
         searchResult,
         setCart,
         modal,
         setModal,
+        purchase,
       }}
     >
       {children}
