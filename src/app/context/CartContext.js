@@ -12,6 +12,7 @@ const Provider = ({ children }) => {
   const [searchResult, setSearchResult] = useState("");
   const [modal, setModal] = useState(false);
   const [purchase, setPurchase] = useState(0);
+  const [product, setProduct] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -73,7 +74,7 @@ const Provider = ({ children }) => {
     }, 3000);
   };
 
-  const purchaseAllItem = (id) => {
+  const purchaseAllItem = () => {
     // const purchasedItem = cart.filter((item) => item.id === id);
     if (cart.length === 0) {
       console.error("Cart is empty");
@@ -101,6 +102,11 @@ const Provider = ({ children }) => {
     }, 3000);
   };
 
+  const detailProduct = (id) => {
+    const getDetailProduct = items.filter((item) => item.id === id);
+    setProduct(getDetailProduct);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -122,6 +128,8 @@ const Provider = ({ children }) => {
         modal,
         setModal,
         purchase,
+        detailProduct,
+        product,
       }}
     >
       {children}

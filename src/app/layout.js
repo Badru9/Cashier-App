@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <NextTopLoader showSpinner={false} color="#EAC696" />
+        <NextTopLoader showSpinner={false} color="#0F2C59" />
         <Provider>{children}</Provider>
       </body>
     </html>

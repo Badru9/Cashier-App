@@ -13,7 +13,7 @@ export default function Navbar() {
   const [isClick, setIsClick] = useState(false);
 
   return (
-    <nav className="z-20 px-5 h-[60px] w-full bg-white shadow-md flex justify-between items-center fixed top-0">
+    <nav className="z-20 px-5 h-[60px] w-full bg-white shadow-md flex justify-between items-center fixed top-0 left-0">
       {/* <Image src={} alt="logo" /> */}
       <Link href="/" onClick={() => router.refresh()}>
         <p className="font-caveat text-2xl text-beigePrimary cursor-pointer w-fit -mt-2">

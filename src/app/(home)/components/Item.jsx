@@ -28,7 +28,7 @@ export default function Item({
           <div className="flex  items-center gap-2">
             <div className="flex items-center">
               <button
-                className="bg-beigePrimary px-4 py-2 rounded-md"
+                className="bg-first text-light px-4 py-2 rounded-md"
                 onClick={() => updateCartQty(item.id, cartItem.qty - 1)}
                 disabled={cartItem.qty === 1}
               >
@@ -36,7 +36,7 @@ export default function Item({
               </button>
               <div className="px-3">{cartItem.qty ?? 1}</div>
               <button
-                className="bg-beigePrimary px-4 py-2 rounded-md"
+                className="bg-first text-light px-4 py-2 rounded-md"
                 onClick={() => updateCartQty(item.id, cartItem.qty + 1)}
               >
                 +
@@ -44,14 +44,14 @@ export default function Item({
             </div>
             <button
               onClick={() => removeFromCart(item.id)}
-              className="text-beigePrimary bg-transparent border-2 border-beigePrimary px-4 py-2 rounded-md"
+              className="text-first bg-transparent border-2 border-first px-4 py-2 rounded-md"
             >
               Remove
             </button>
           </div>
         ) : (
           <button
-            className="bg-beigePrimary px-4 py-2 rounded-md"
+            className="bg-first text-light px-4 py-2 rounded-md"
             onClick={() => addToCart(item)}
           >
             Add to cart

@@ -6,7 +6,6 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import Navbar from "../(home)/components/Navbar";
 import Modal from "./components/Modal";
-import ModalPurchaseAll from "./components/ModalPurchaseAll";
 
 // import CartComponent from "../(home)/components/cart";
 
@@ -17,12 +16,12 @@ export default function Cart() {
     <>
       <Navbar />
       <div className="bg-smokeWhite px-10 pt-5 mt-14">
-        <h1 className="text-xl font-semibold tracking-wider from-beigePrimary to-transparent bg-gradient-to-r w-fit px-4 py-1 text-black/60 ">
+        <h1 className="text-xl font-semibold tracking-wider from-first to-transparent bg-gradient-to-r w-fit px-4 py-1 text-light">
           Checkout List
         </h1>
         <button
           onClick={() => purchaseAllItem()}
-          className="mt-5 bg-beigePrimary px-4 py-1 rounded-md shadow-md  hover:bg-opacity-80"
+          className="mt-5 bg-first text-light px-4 py-1 rounded-md shadow-md  hover:bg-opacity-80"
         >
           Purchase All Item
         </button>
@@ -34,7 +33,7 @@ export default function Cart() {
           cart.map((item) => (
             <div
               key={item.id}
-              className="bg-white flex flex-col gap-2 w-fit h-fit p-6 rounded-md"
+              className="bg-white flex flex-col gap-2 w-fit h-fit p-6 rounded-md shadow-md"
             >
               <div className="flex justify-center ">
                 <Image
@@ -60,7 +59,7 @@ export default function Cart() {
                 {Math.trunc(item.price * item.qty)}
               </p>
               <button
-                className="bg-beigePrimary rounded-md px-2 py-1 shadow-md hover:opacity-80"
+                className="bg-first text-light rounded-md px-2 py-1 shadow-md hover:opacity-80"
                 onClick={() => purchaseEachItem(item.id)}
               >
                 Purchase

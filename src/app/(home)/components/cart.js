@@ -30,7 +30,7 @@ export default function Cart({ description }) {
               key={item.id}
             >
               <div className="flex flex-col gap-1">
-                <p className="truncate w-[250px]">{item.title}</p>
+                <p className="truncate font-semibold w-[250px]">{item.title}</p>
 
                 <p>
                   ${" "}
@@ -41,7 +41,7 @@ export default function Cart({ description }) {
                 <p>x {item.qty}</p>
                 <Link
                   href="/cart"
-                  className="bg-beigePrimary px-4 py-2 rounded-md w-fit my-2 hover:opacity-80"
+                  className="bg-first text-light px-4 py-2 rounded-md w-fit my-2 hover:opacity-80"
                 >
                   Checkout
                 </Link>
@@ -49,9 +49,9 @@ export default function Cart({ description }) {
               <div className="bg-white">
                 <Image
                   src={item.image}
-                  width={60}
-                  height={60}
-                  className="p-2"
+                  width={70}
+                  height={70}
+                  className=" mr-5"
                   alt="img-product"
                 />
               </div>

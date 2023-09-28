@@ -7,7 +7,6 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import Item from "./components/item";
 import Navbar from "./components/Navbar";
-import SearchedItem from "./components/Search";
 
 export default function Home() {
   // Context
@@ -15,9 +14,9 @@ export default function Home() {
     useContext(CartContext);
 
   return (
-    <div className="w-full min-h-screen bg-first relative overflow-hidden">
+    <div className="w-full min-h-screen bg-smokeWhite relative overflow-hidden">
       <Navbar />
-      <div className="flex justify-center bg-first relative w-full mt-20">
+      <div className="flex justify-center bg-smokeWhite relative w-full mt-20">
         <div className="w-1/2">
           <Image
             src={Blobs}
@@ -40,13 +39,13 @@ export default function Home() {
           </h1>
         </div>
       </div>
-      <div className="w-full min-h-screen bg-beigeSecondary p-10 flex flex-col gap-2">
+      <div className="w-full min-h-screen bg-dark p-10 flex flex-col gap-2">
         <div className="p-5 w-fit">
           <h1 className="text-white text-5xl border-b-4 border-opacity-30 pb-5">
             Products
           </h1>
         </div>
-        <div className=" p-5 flex flex-wrap  gap-3">
+        <div className=" p-5 flex flex-wrap gap-3">
           {items.map((item) => (
             <Item
               item={item}
