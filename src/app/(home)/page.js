@@ -41,8 +41,8 @@ export default function Home() {
       </div>
       <div className="w-full min-h-screen bg-dark p-10 flex flex-col gap-2">
         <div className="p-5 w-fit">
-          <h1 className="text-white text-5xl border-b-4 border-opacity-30 pb-5">
-            Products
+          <h1 className="text-white text-5xl font-semibold tracking-wide border-b-4 border-opacity-30 pb-5">
+            Our Best Products
           </h1>
         </div>
         <div className=" p-5 flex flex-wrap gap-3">

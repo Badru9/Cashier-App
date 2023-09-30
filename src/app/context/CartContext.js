@@ -90,8 +90,6 @@ const Provider = ({ children }) => {
       total += allItemCost;
     });
 
-    console.log(total);
-
     setPurchase(total);
 
     setTimeout(() => {
@@ -103,8 +101,12 @@ const Provider = ({ children }) => {
   };
 
   const detailProduct = (id) => {
-    const getDetailProduct = items.filter((item) => item.id === id);
-    setProduct(getDetailProduct);
+    const selectedItem = items.filter((item) => item.id === id);
+    setProduct(selectedItem);
+  };
+
+  const buyNow = (id) => {
+    addToCart(id);
   };
 
   useEffect(() => {
@@ -130,6 +132,7 @@ const Provider = ({ children }) => {
         purchase,
         detailProduct,
         product,
+        buyNow,
       }}
     >
       {children}

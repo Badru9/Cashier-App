@@ -36,7 +36,8 @@ export default function Cart({ description }) {
                   ${" "}
                   {item.qty <= 1
                     ? item.price
-                    : Math.trunc(item.price * item.qty)}
+                    : Math.trunc(item.price * item.qty)}{" "}
+                  - <span className="font-semibold">discount $1</span>
                 </p>
                 <p>x {item.qty}</p>
                 <Link

@@ -1,6 +1,7 @@
 "use client";
 
 import Keranjang from "../components/icons/Cart.svg";
+import Link from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
@@ -73,9 +74,22 @@ export default function Cart() {
             </div>
           ))
         ) : (
-          <div className="w-full flex flex-col gap-3 justify-center items-center select-none pointer-events-none">
-            <Image src={Keranjang} alt="Keranjang" width={150} height={150} />
+          <div className="w-full flex flex-col gap-3 justify-center items-center ">
+            <Image
+              src={Keranjang}
+              alt="Keranjang"
+              width={150}
+              height={150}
+              className="select-none pointer-events-none"
+            />
             <p className="text-black/60 text-xl">Keranjang Anda Kosong</p>
+            <Link
+              href="/"
+              className="cursor-pointer bg-first text-light px-4 py-1 hover:rounded-md transition-all duration-200 ease-in-out hover:scale-105"
+            >
+              {" "}
+              Ayok Cari Barang Favoritmu !
+            </Link>
           </div>
         )}
       </div>

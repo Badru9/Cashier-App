@@ -5,12 +5,11 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import Link from "next/link";
 
 export default function SearchedItem() {
-  const { items, detailProduct } = useContext(CartContext); // Menggunakan items dari context
+  const { items, detailProduct } = useContext(CartContext);
 
   const [searchResult, setSearchResult] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
 
-  // Memperbarui daftar item yang cocok dengan pencarian
   useEffect(() => {
     const filtered = items.filter((item) =>
       item.title.toLowerCase().includes(searchResult.toLowerCase())
@@ -18,11 +17,16 @@ export default function SearchedItem() {
     setFilteredItems(filtered);
   }, [searchResult, items]);
 
+  const resetSearchResult = (e) => {
+    if (e.key === "Enter") setSearchResult("");
+  };
+
   return (
     <>
       <div className="w-[500px] absolute top-0 right-20 z-10">
         <FaMagnifyingGlass className="absolute top-2 left-2 text-first" />
         <input
+          onKeyDown={resetSearchResult}
           type="text"
           className="bg-dark/30 px-8 rounded-full h-[30px] w-[300px] text-black"
           value={searchResult}

@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { useContext } from "react";
 import { CartContext } from "@/app/context/CartContext";
+import Modal from "../../cart/components/Modal";
+import Link from "next/link";
 
 export default function Product() {
-  const { product, addToCart } = useContext(CartContext);
+  const { product, addToCart, modal } = useContext(CartContext);
   return (
     <>
       {product.map((product) => {
@@ -24,14 +26,18 @@ export default function Product() {
               </p>
               <div className="mt-20 flex gap-6">
                 <button
-                  className="text-first border-2 border-first px-10 py-2 rounded-md"
+                  className="text-first border-2 border-first px-10 py-2 rounded-md font-semibold"
                   onClick={() => addToCart(product)}
                 >
                   Tambahkan Ke Keranjang
                 </button>
-                <button className="bg-first text-light px-10 py-2 rounded-md">
+                <Link
+                  href="/cart"
+                  className="bg-first text-light font-semibold hover:opacity-80 transition-opacity duration-200 ease-in-out px-10 py-2 rounded-md"
+                  onClick={() => addToCart(product)}
+                >
                   Beli Sekarang
-                </button>
+                </Link>
               </div>
             </div>
           </div>
