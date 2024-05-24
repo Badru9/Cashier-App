@@ -51,7 +51,7 @@ export default function Item({
           </div>
         ) : (
           <button
-            className="bg-first text-light px-4 py-2 rounded-md"
+            className="bg-first text-light px-4 py-2 rounded-full"
             onClick={() => addToCart(item)}
           >
             Add to cart

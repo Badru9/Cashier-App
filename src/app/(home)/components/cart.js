@@ -5,9 +5,10 @@ import Image from "next/image";
 import CartIcons from "../../components/icons/Cart.svg";
 import { useContext } from "react";
 import { CartContext } from "@/app/context/CartContext";
+import { GoTrash } from "react-icons/go";
 
 export default function Cart({ description }) {
-  const { cart } = useContext(CartContext);
+  const { cart, removeFromCart, detailProduct } = useContext(CartContext);
 
   return (
     <>
@@ -30,7 +31,13 @@ export default function Cart({ description }) {
               key={item.id}
             >
               <div className="flex flex-col gap-1">
-                <p className="truncate font-semibold w-[250px]">{item.title}</p>
+                <Link
+                  className="truncate font-semibold w-[250px] cursor-pointer"
+                  onClick={() => detailProduct(item.id)}
+                  href={`/product`}
+                >
+                  {item.title}
+                </Link>
 
                 <p>
                   ${" "}
@@ -40,12 +47,19 @@ export default function Cart({ description }) {
                   - <span className="font-semibold">discount $1</span>
                 </p>
                 <p>x {item.qty}</p>
-                <Link
-                  href="/cart"
-                  className="bg-first text-light px-4 py-2 rounded-md w-fit my-2 hover:opacity-80"
-                >
-                  Checkout
-                </Link>
+                <div className="flex items-center gap-3">
+                  <Link
+                    href="/cart"
+                    className="bg-first text-light px-4 py-1.5 rounded-md w-fit my-2 hover:opacity-80 cursor-pointer"
+                  >
+                    Checkout
+                  </Link>
+                  <GoTrash
+                    size={32}
+                    className="bg-first text-light p-2 rounded-md w-fit my-2 hover:opacity-80 cursor-pointer"
+                    onClick={() => removeFromCart(item.id)}
+                  />
+                </div>
               </div>
               <div className="bg-white">
                 <Image

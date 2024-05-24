@@ -23,18 +23,19 @@ export default function SearchedItem() {
 
   return (
     <>
-      <div className="w-[500px] absolute top-0 right-20 z-10">
-        <FaMagnifyingGlass className="absolute top-2 left-2 text-first" />
+      <div className="w-fit lg:w-[500px] relative z-10">
+        <FaMagnifyingGlass className="absolute top-2 left-3 text-first" />
         <input
           onKeyDown={resetSearchResult}
           type="text"
-          className="bg-dark/30 px-8 rounded-full h-[30px] w-[300px] text-black"
+          className="bg-dark/20 px-8 rounded-full h-[30px] w-fit lg:w-[300px] text-black"
           value={searchResult}
           onChange={(e) => setSearchResult(e.target.value)}
+          placeholder="Find your fav..."
         />
         {searchResult !== "" ? (
           filteredItems.length > 0 ? (
-            <div className="flex gap-3 bg-white overflow-y-scroll w-full max-h-[500px] h-auto px-6 py-4 mt-5 rounded-md shadow-md flex-col">
+            <div className="flex absolute gap-3 bg-white overflow-y-scroll w-fit max-h-[500px] overflow-x-hidden h-auto px-2 lg:px-6 py-4 mt-5 rounded-md shadow-md flex-col">
               {filteredItems.map((item) => {
                 return (
                   <div
@@ -65,7 +66,7 @@ export default function SearchedItem() {
               })}
             </div>
           ) : (
-            <div className="flex gap-3 bg-white overflow-y-scroll w-auto max-h-[500px] h-auto px-6 py-4 mt-5 rounded-md shadow-md flex-col">
+            <div className="flex absolute gap-3 bg-white overflow-y-scroll w-fit h-auto px-2 lg:px-6 py-4 mt-5 rounded-md shadow-md flex-col">
               Barang tidak sesuai
             </div>
           )

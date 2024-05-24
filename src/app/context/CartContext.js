@@ -16,7 +16,7 @@ const Provider = ({ children }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://fakestoreapi.com/products");
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API}`);
       setItems(response.data);
     } catch (error) {
       console.error(error);
@@ -71,7 +71,7 @@ const Provider = ({ children }) => {
       const newCart = cart.filter((item) => item.id !== id);
       setCart(newCart);
       setModal(false);
-    }, 3000);
+    }, 5000);
   };
 
   const purchaseAllItem = () => {
