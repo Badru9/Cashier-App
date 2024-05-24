@@ -5,8 +5,11 @@ import Man from "../Man1.svg";
 import Blobs from "../blobs.svg";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import Item from "./components/item.jsx";
+// import Item from "./components/item.jsx";
 import Navbar from "./components/Navbar";
+import dynamic from "next/dynamic";
+
+const Item = dynamic(() => import("./components/item.jsx"), { ssr: false });
 
 export default function Home() {
   // Context
