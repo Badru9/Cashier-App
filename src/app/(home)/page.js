@@ -9,7 +9,9 @@ import { CartContext } from "../context/CartContext";
 import Navbar from "./components/Navbar";
 import dynamic from "next/dynamic";
 
-const Item = dynamic(() => import("./components/item.jsx"), { ssr: false });
+const Item = dynamic(() => import("@/app/(home)/components/Item"), {
+  ssr: false,
+});
 
 export default function Home() {
   // Context
