@@ -5,7 +5,7 @@ import Man from "../Man1.svg";
 import Blobs from "../blobs.svg";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import Item from "./components/item";
+import Item from "./components/item.jsx";
 import Navbar from "./components/Navbar";
 
 export default function Home() {
